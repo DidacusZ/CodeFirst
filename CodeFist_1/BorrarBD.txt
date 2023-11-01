@@ -1,0 +1,14 @@
+
+EJECUTAR EL SIGUIENTE SCRIPT PARA LIMPIAR LA BASE DE DATOS Y PODER VOLVER A LANZAR EL CODE FIRST
+
+DROP TABLE IF EXISTS "gbp_biblioteca"."Prestamos";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Estados_Prestamos";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Usuarios";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Accesos";
+DROP TABLE IF EXISTS "gbp_biblioteca"."__EFMigrationsHistory";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Rel_Autores_Libros";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Libros";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Colecciones";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Generos";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Editoriales";
+DROP TABLE IF EXISTS "gbp_biblioteca"."Autores";
