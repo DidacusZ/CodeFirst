@@ -10,6 +10,6 @@ namespace CodeFist_1.Models
         public string nombre_autor { get; set; }
         public string apellidos_autor { get; set; }
 
-        public ICollection<Rel_Autores_Libros> Rel_Autores { get; set; }//un autoer puede tener muchos Rel_Autores_Libros
+        public ICollection<AutoresLibros> Rel_Autores_Libros { get; set; }//un autoer puede tener muchos Rel_Autores_Libros
     }
 }

@@ -7,6 +7,15 @@ namespace CodeFist_1.Models
         // <nombre entidad>     nombre en BD
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Accesos> Accesos { get; set; }
+        public DbSet<Autores> Autores { get; set; }
+        public DbSet<Colecciones> Colecciones { get; set; }
+        public DbSet<Editoriales> Editoriales { get; set; }
+        public DbSet<Estados_Prestamos> Estados_Prestamos { get; set; }
+        public DbSet<Generos> Generos { get; set; }
+        public DbSet<Libros> Libros { get; set; }
+        public DbSet<Prestamos> Prestamos { get; set; }
+        public DbSet<LibrosPrestamos> Rel_Libros_Prestamos { get; set; }
+        public DbSet<AutoresLibros> Rel_Autores_Libros { get; set; }
 
         public Contexto(DbContextOptions<Contexto> opciones):base(opciones) { 
         
@@ -37,11 +46,21 @@ namespace CodeFist_1.Models
             .WithMany(muchos => muchos.Prestamos_estado)
             .HasForeignKey(uno => uno.id_prestamo);
 
-            //Libro-Prestamos
-            modelBuilder.Entity<Prestamos>()
+
+
+            //Libro-Rel_Libros_Prestamos
+            modelBuilder.Entity<LibrosPrestamos>()
             .HasOne(uno => uno.Libro)
-            .WithMany(muchos => muchos.Prestamos_libro)
+            .WithMany(muchos => muchos.Rel_Libros_Prestamos)
             .HasForeignKey(uno => uno.id_libro);
+
+            //Prestamos-Rel_Libros_Prestamos
+            modelBuilder.Entity<LibrosPrestamos>()
+            .HasOne(uno => uno.Prestamo)
+            .WithMany(muchos => muchos.Rel_Prestamos_Libros)
+            .HasForeignKey(uno => uno.id_prestamo);
+
+
 
             //Coleccion-Libros
             modelBuilder.Entity<Libros>()
@@ -61,17 +80,22 @@ namespace CodeFist_1.Models
             .WithMany(muchos => muchos.Libros_genero)
             .HasForeignKey(uno => uno.id_genero);
 
+
+
             //Libro-Rel_libros_autores
-            modelBuilder.Entity<Rel_Autores_Libros>()
+            modelBuilder.Entity<AutoresLibros>()
             .HasOne(uno => uno.Libro)
-            .WithMany(muchos => muchos.Rel_Libros)
+            .WithMany(muchos => muchos.Rel_Libros_Autores)
             .HasForeignKey(uno => uno.id_libro);
 
             //Autor-Rel_libros_autores
-            modelBuilder.Entity<Rel_Autores_Libros>()
+            modelBuilder.Entity<AutoresLibros>()
             .HasOne(uno => uno.Autor)
-            .WithMany(muchos => muchos.Rel_Autores)
+            .WithMany(muchos => muchos.Rel_Autores_Libros)
             .HasForeignKey(uno => uno.id_autor);
+
+
+
 
 
             /* RELACION UNO A MUCHOS

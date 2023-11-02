@@ -1075,24 +1075,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\clase\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Altair\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\clase\\Desktop\\clase 2\\c#\\CodeFirst\\CodeFist_1\\CodeFist_1\\CodeFist_1.csproj",
+      "projectUniqueName": "C:\\Users\\Altair\\Desktop\\clase\\C#\\CodeFirst\\CodeFist_1\\CodeFist_1.csproj",
       "projectName": "CodeFist_1",
-      "projectPath": "C:\\Users\\clase\\Desktop\\clase 2\\c#\\CodeFirst\\CodeFist_1\\CodeFist_1\\CodeFist_1.csproj",
-      "packagesPath": "C:\\Users\\clase\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\clase\\Desktop\\clase 2\\c#\\CodeFirst\\CodeFist_1\\CodeFist_1\\obj\\",
+      "projectPath": "C:\\Users\\Altair\\Desktop\\clase\\C#\\CodeFirst\\CodeFist_1\\CodeFist_1.csproj",
+      "packagesPath": "C:\\Users\\Altair\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Altair\\Desktop\\clase\\C#\\CodeFirst\\CodeFist_1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\clase\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Altair\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

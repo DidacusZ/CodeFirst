@@ -22,6 +22,7 @@ namespace CodeFist_1.Models
 
         public ICollection<Prestamos> Prestamos_libro { get; set; }//un libro puede tener muchos prestamos
 
-        public ICollection<Rel_Autores_Libros> Rel_Libros { get; set; }//un libro puede tener muchos Rel_Autores_Libros
+        public ICollection<AutoresLibros> Rel_Libros_Autores { get; set; }//un libro puede tener muchos Rel_Autores_Libros
+        public ICollection<LibrosPrestamos> Rel_Libros_Prestamos { get; set; }//un libro puede tener muchos Rel_Autores_Libros
     }
 }

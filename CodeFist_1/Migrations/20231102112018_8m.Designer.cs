@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CodeFist_1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231101124657_8m")]
-    partial class _8m
+    [Migration("20231102112018_9m")]
+    partial class _9m
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,6 +189,12 @@ namespace CodeFist_1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
+                    b.Property<int>("Libroid_libro")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("cantidad_libro")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("fch_entrega_prestamo")
                         .HasColumnType("timestamp with time zone");
 
@@ -209,7 +215,7 @@ namespace CodeFist_1.Migrations
 
                     b.HasKey("id_prestamo");
 
-                    b.HasIndex("id_libro");
+                    b.HasIndex("Libroid_libro");
 
                     b.HasIndex("id_usuario");
 
@@ -237,6 +243,29 @@ namespace CodeFist_1.Migrations
                     b.HasIndex("id_libro");
 
                     b.ToTable("Rel_Autores_Libros");
+                });
+
+            modelBuilder.Entity("CodeFist_1.Models.Rel_Libros_Prestamos", b =>
+                {
+                    b.Property<int>("id_rel_libros_prestamos")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("id_rel_libros_prestamos"));
+
+                    b.Property<int>("id_libro")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("id_prestamo")
+                        .HasColumnType("integer");
+
+                    b.HasKey("id_rel_libros_prestamos");
+
+                    b.HasIndex("id_libro");
+
+                    b.HasIndex("id_prestamo");
+
+                    b.ToTable("Rel_Libros_Prestamos");
                 });
 
             modelBuilder.Entity("CodeFist_1.Models.Usuarios", b =>
@@ -324,7 +353,7 @@ namespace CodeFist_1.Migrations
                 {
                     b.HasOne("CodeFist_1.Models.Libros", "Libro")
                         .WithMany("Prestamos_libro")
-                        .HasForeignKey("id_libro")
+                        .HasForeignKey("Libroid_libro")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -350,13 +379,13 @@ namespace CodeFist_1.Migrations
             modelBuilder.Entity("CodeFist_1.Models.Rel_Autores_Libros", b =>
                 {
                     b.HasOne("CodeFist_1.Models.Autores", "Autor")
-                        .WithMany("Rel_Autores")
+                        .WithMany("Rel_Autores_Libros")
                         .HasForeignKey("id_autor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CodeFist_1.Models.Libros", "Libro")
-                        .WithMany("Rel_Libros")
+                        .WithMany("Rel_Libros_Autores")
                         .HasForeignKey("id_libro")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -364,6 +393,25 @@ namespace CodeFist_1.Migrations
                     b.Navigation("Autor");
 
                     b.Navigation("Libro");
+                });
+
+            modelBuilder.Entity("CodeFist_1.Models.Rel_Libros_Prestamos", b =>
+                {
+                    b.HasOne("CodeFist_1.Models.Libros", "Libro")
+                        .WithMany("Rel_Libros_Prestamos")
+                        .HasForeignKey("id_libro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CodeFist_1.Models.Prestamos", "Prestamo")
+                        .WithMany("Rel_Prestamos_Libros")
+                        .HasForeignKey("id_prestamo")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Libro");
+
+                    b.Navigation("Prestamo");
                 });
 
             modelBuilder.Entity("CodeFist_1.Models.Usuarios", b =>
@@ -384,7 +432,7 @@ namespace CodeFist_1.Migrations
 
             modelBuilder.Entity("CodeFist_1.Models.Autores", b =>
                 {
-                    b.Navigation("Rel_Autores");
+                    b.Navigation("Rel_Autores_Libros");
                 });
 
             modelBuilder.Entity("CodeFist_1.Models.Colecciones", b =>
@@ -411,7 +459,14 @@ namespace CodeFist_1.Migrations
                 {
                     b.Navigation("Prestamos_libro");
 
-                    b.Navigation("Rel_Libros");
+                    b.Navigation("Rel_Libros_Autores");
+
+                    b.Navigation("Rel_Libros_Prestamos");
+                });
+
+            modelBuilder.Entity("CodeFist_1.Models.Prestamos", b =>
+                {
+                    b.Navigation("Rel_Prestamos_Libros");
                 });
 
             modelBuilder.Entity("CodeFist_1.Models.Usuarios", b =>
