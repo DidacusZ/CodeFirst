@@ -10,7 +10,8 @@ namespace CodeFist_1
             var builder = WebApplication.CreateBuilder(args);
 
             //conexion
-            builder.Services.AddDbContext<Contexto>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("MiConexion")));
+            builder.Services.AddDbContext<Contexto>(o =>
+            o.UseNpgsql(builder.Configuration.GetConnectionString("MiConexion")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -18,12 +19,13 @@ namespace CodeFist_1
             var app = builder.Build();
 
             //se actualiza la BD
+            /*
             using (var scope = app.Services.CreateScope())
             {
                 var appDBContext = scope.ServiceProvider.GetRequiredService<Contexto>();
-                appDBContext.Database.Migrate();
+                //appDBContext.Database.Migrate();
             }
-
+            */
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

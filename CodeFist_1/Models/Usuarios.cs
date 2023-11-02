@@ -26,4 +26,5 @@ namespace CodeFist_1.Models
 
         public ICollection<Prestamos> Prestamos_usuario { get; set;}//un usuario puede tener muchos prestamos
     }
+
 }

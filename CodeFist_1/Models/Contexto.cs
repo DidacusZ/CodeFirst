@@ -21,6 +21,10 @@ namespace CodeFist_1.Models
         
         }
 
+        public Contexto()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)//ids autoincrementables
         {
             modelBuilder.UseSerialColumns();//ids autoincrementables

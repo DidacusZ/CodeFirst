@@ -13,7 +13,7 @@ namespace CodeFist_1.Controllers
             _logger = logger;
         }
 
-        //
+        //para que se pueda usar el contexto
         private readonly Contexto contexto;
         public HomeController(Contexto contexto)
         {
